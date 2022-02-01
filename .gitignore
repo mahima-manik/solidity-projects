@@ -1,2 +1,5 @@
+# truffle compile output folder
 build
 .idea
+# local env files
+.env
