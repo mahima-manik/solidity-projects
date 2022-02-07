@@ -3,24 +3,31 @@ pragma solidity ^0.8.0;
 
 contract Bidding {
     address private highestBidder;
-    uint public highestBid;
+    uint private highestBid;
     uint private totalBid;
     uint public biddingDuration;
     uint public biddingStartTime;
 
     event BiddingStarts(uint biddingStartTime);
     event WinnerDeclared(address highestBidder, uint amount);
-//    event BiddingNotOverYet(uint biddingStartTime, uint biddingDuration);
 
-
-
-    function startBidding(uint biddingTime) external {
+    function startBidding(uint biddingTime) external payable {
+        require(block.timestamp >= biddingStartTime + biddingDuration,
+            "Bidding is in  progress, please wait");
+        require(totalBid == 0, "Winner has not been paid out yet.");
+        require(msg.value > 0,
+            "Bidding should be started with some initial funds.");
         biddingDuration = biddingTime;
         biddingStartTime = block.timestamp;
+        totalBid += msg.value;
+        highestBid = msg.value;
+        highestBidder = msg.sender;
         emit BiddingStarts(biddingDuration);
     }
+
     function bet() external payable {
-        if (block.timestamp < biddingStartTime + biddingDuration)
+        require (block.timestamp < biddingStartTime + biddingDuration,
+            "Bidding is already over, please restart");
         totalBid += msg.value;
         if (msg.value > highestBid) {
             highestBid = msg.value;
@@ -32,11 +39,12 @@ contract Bidding {
         require (block.timestamp >= biddingStartTime + biddingDuration,
             "Bidding duration is not over yet");
         payable(highestBidder).transfer(totalBid);
-        emit WinnerDeclared(highestBidder, totalBid);
+        address winnerAddress = highestBidder;
         totalBid = 0;
         highestBid = 0;
-        biddingStartTime = block.timestamp;
-        // TODO: set highestBidder to 0x0
-        return highestBidder;
+        biddingStartTime = 0;
+        highestBidder = address(0);
+        emit WinnerDeclared(highestBidder, totalBid);
+        return winnerAddress;
     }
 }
