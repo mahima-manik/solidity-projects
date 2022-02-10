@@ -5,9 +5,8 @@ function timeout(ms) {
 }
 
 async function getBalanceInEther(account)    {
-    balance = (await web3.eth.getBalance(account));
-    return parseFloat(web3.utils.fromWei(balance));
-//    return balance;
+    balance = parseFloat(await web3.eth.getBalance(account));
+    return balance;
 }
 
 // in memory virtual blockchain
