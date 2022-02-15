@@ -4,7 +4,7 @@ Smart contract in Ethereum is a collection of code (its functions) and data (its
 
 Following technologies are being used:
 
-1. Solidity: Language for smae
+1. Solidity: Language for writing smart contract 
 2. Truffle: Framework for Ethereum smart contract development. Provides the compiler for smart contracts.
 3. Ganache: Local Ethereum blockchain network with accounts and ether initialized.
 4. Metamask wallet: It is a browser extension to store account keys. This Ether is used in deploying/interacting with the contract.
@@ -18,12 +18,12 @@ Additionally install following packages in the project folder:
 ```
 npm init
 npm i @truffle/hdwallet-provider@2.0.0   #For connection between wallet and truffle
-npm i doten # For loading environment variable (private keys and secret phase)
+npm i dotenv # For loading environment variable (private keys and secret phase)
 npm i @openzeppelin/contracts
 npm i @openzeppelin/contracts --save
 ```
 
-Commands used:
+#### Commands used:
 
 `truffle init`: To initialize an empty solidity project with just Migration contract.
 
@@ -31,6 +31,18 @@ Commands used:
 
 `truffle migrate`: Deploys the smart contract (present in `migrations/`) to the network specified in `truffle-config.js` 
 
-Faucet sources:
+#### Faucet sources:
+To get ether in Metamask wallet to deploy and interact with smart contracts on Rinkeby/Mumbai testnets
 1. https://faucets.chain.link/rinkeby: 0.1 Eth
 2. https://rinkeby-faucet.com/: 0.01 Eth
+
+
+## Identity Management Contract
+
+### Requirements
+1. Authority should be able to add the certificate to the blockchain. 
+2. Only authority should be able to issue the certificate to individuals.
+4. Verify that the certificate is issued to the given address.
+
+Future Scope:
+1. Issue certificate as NFT
