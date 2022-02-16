@@ -25,8 +25,7 @@ const HDWalletProvider = require('@truffle/hdwallet-provider');
 // const mnemonic = fs.readFileSync(".secret").toString().trim();
 
 const private_keys = [
-    process.env.PRIVATE_KEY_0,
-    process.env.PRIVATE_KEY_1,
+    process.env.PRIVATE_KEY_0
 ]
 module.exports = {
   /**
@@ -65,8 +64,8 @@ module.exports = {
      rinkeby: {
          provider: () => new HDWalletProvider({
             privateKeys: private_keys,
-            providerOrUrl: 'https://rinkeby.infura.io/v3/7b7cc668e6fe4659b493b38a6e6ab874',
-            numberOfAddress: 2
+            providerOrUrl: process.env.RINKEBY_URL,
+            numberOfAddress: 1
          }),
          network_id: 4,       // Ropsten's id
 //         gas: 5500000,        // Ropsten has a lower block limit than mainnet
