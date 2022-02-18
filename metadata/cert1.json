@@ -1,0 +1,18 @@
+{
+  "name": "Santa Clara University",
+  "description": "Starting a business course",
+  "image": "https://ipfs.io/ipfs/QmZ1Q1aH72SX6jNWoaPRHadfPWqxYBNq9aoPRpF8evUF54",
+  "attributes": [{
+    "display_type": "date",
+    "trait_type": "Completion Date",
+    "value": 1638197306
+  },
+  {
+    "trait_type": "Awarded to",
+    "value": "Draco Malfoy"
+  },
+  {
+    "trait_type": "Instructor",
+    "value": "Ron Weasley"
+  }]
+}

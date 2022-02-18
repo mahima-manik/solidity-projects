@@ -13,6 +13,8 @@ Consider a use case: Each college or institute has its own token. This token is 
 3. Issue certificate as NFT
 4. Verify that the certificate is issued to the given address.
 
+To overcome the limitation that 1 address can issue only 1 kind of token, we change the mapping to (contractAddress => creatorAddress)
+
 ## Bidding Contract
 
 Its a game deployed on smart contract. Anyone can start the bidding by putting some Ether and specifying bidding time. Before the bidding ends, anyone can come and put some Ether on the contract. After the bidding ends, highest Bidder gets all the Ether and wins.
@@ -56,3 +58,6 @@ npm i @openzeppelin/contracts --save
 To get ether in Metamask wallet to deploy and interact with smart contracts on Rinkeby/Mumbai testnets
 1. https://faucets.chain.link/rinkeby: 0.1 Eth
 2. https://rinkeby-faucet.com/: 0.01 Eth
+
+### References:
+1. How to read event/transaction data emitted: https://trufflesuite.com/docs/truffle/reference/contract-abstractions#processing-transaction-results
