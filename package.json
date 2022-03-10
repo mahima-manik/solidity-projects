@@ -1,0 +1,25 @@
+{
+  "name": "solidity-projects",
+  "version": "1.0.0",
+  "description": "This project contains two contract use cases.",
+  "main": "identity.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mahima-manik/solidity-projects.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mahima-manik/solidity-projects/issues"
+  },
+  "homepage": "https://github.com/mahima-manik/solidity-projects#readme",
+  "dependencies": {
+    "@quant-finance/solidity-datetime": "^2.0.0"
+  }
+}

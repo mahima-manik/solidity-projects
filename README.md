@@ -1,25 +1,37 @@
 This project contains two contract use cases.
 
-## Identity Management Contract
-
-Its a way for enterprises to release their NFT tokens easily and individuals to collect these tokens from various parties. Each NFT will serve as a certificate to the individual, as it can only be minted by the NFT creator directly.
-
-Consider a use case: Each college or institute has its own token. This token is used to identify people belonging to this institute. Institute can mint their token to their members. Similarly, these members can collect NFTs from various institutes.
-
-
-### Requirements
-1. Authority should be able to add the certificate to the blockchain.
-2. Only authority should be able to issue the certificate to individuals.
-3. Issue certificate as NFT
-4. Verify that the certificate is issued to the given address.
-
-To overcome the limitation that 1 address can issue only 1 kind of token, we change the mapping to (contractAddress => creatorAddress)
-
 ## Bidding Contract
 
 Its a game deployed on smart contract. Anyone can start the bidding by putting some Ether and specifying bidding time. Before the bidding ends, anyone can come and put some Ether on the contract. After the bidding ends, highest Bidder gets all the Ether and wins.
 
 Higher chances gives you higher yield here!
+
+## Birthday Contract
+### Requirements:
+V0:
+1. I can login with my address, add my Birthday to the contract. 
+2. Anyone can view my birthday, and send me ether gift.
+3. Ether will be bestowed to my address only on the date of my birthday. 
+4. Everyone will be able to see how much gift an address/person has received. 
+
+V1:
+1. I can add my Birthday and a "wish-list" on the blockchain.
+2. Wishlist will contains all the things I want for my Birthday and how much will they cost.
+3. Anyone can view my birthday and wish list. They can send their ether gift to as many things in my wish list as they want.
+4. Once I receive my generous gift, sender can share their gift on any social media platform (along with transaction hash ;))
+
+V2:
+1. Add other events to the blockchain as well, like: wedding anniversary, product launch ceremony, etc. 
+2. Show the complete event's page to the viewers. 
+3. Create a time interval, where all the gift can be withdrawn from the contract.
+
+V3:
+1. Celebrate your event with all your friends in Metaverse! 
+2. They will receive NFTs on sending gift, which will act as an entry token to the Metaverse world.
+
+## Identity Management Contract
+
+Moved to another package [here](https://github.com/mahima-manik/nft-certificates-dapp)
 
 ## Concepts
 
