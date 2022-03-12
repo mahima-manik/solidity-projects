@@ -1,4 +1,10 @@
 const Occasion = artifacts.require("Occasion");
+const truffleAssert = require('truffle-assertions');
+
+async function getBalanceInEther(account)    {
+    balance = parseFloat(await web3.eth.getBalance(account));
+    return balance;
+}
 
 contract("Occasion", (accounts) => {
     let my_birthday, my_birthday_date, my_birthday_month, my_birthday_year
@@ -16,6 +22,7 @@ contract("Occasion", (accounts) => {
     });
 
     it ('Set and check birthday', async () => {        
+        console.log("Setting Birthday to: ", my_birthday_date, my_birthday_month, my_birthday_year)
         await contractInstance.set(my_birthday_date, my_birthday_month, my_birthday_year);
         const birthday = await contractInstance.get();
         
@@ -28,9 +35,22 @@ contract("Occasion", (accounts) => {
         assert.equal(birthday_year, my_birthday_year, "Birthday year not set correctly")
     });
 
-    it ('Check if today is my birthday', async () => {        
-        const is_my_birthday = await contractInstance.is_my_birthday();
-        assert.equal(is_my_birthday, true, "Birthday should be today")
+    // it ('Check if today is my birthday', async () => {        
+    //     const is_my_birthday = await contractInstance.is_my_birthday();
+    //     assert.equal(is_my_birthday, true, "Birthday should be today")
+    // });
+
+    it ('Send gift test', async () => {
+        const giftAmount = web3.utils.toWei('1')
+        const result = await contractInstance.send_gift(accounts[0], {from: accounts[1], value: giftAmount});
+        contractFund = await web3.eth.getBalance(contractInstance.address)
+        assert.equal(contractFund, giftAmount, "Contract fund not initialized conrrectly")
+        truffleAssert.eventEmitted(result, 'GiftSent', (ev) => {
+            assert.equal(ev.sender, accounts[1], "Sender address is not same")
+            assert.equal(ev.receiver, accounts[0], "Receiver address is not same")
+            assert.equal(ev.amount, giftAmount, "Gift amount is not same")
+            return true;
+        });        
     });
 
 });
