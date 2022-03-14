@@ -1,4 +1,4 @@
-const OccasionContract = artifacts.require("Occasion");
+const GiftingContract = artifacts.require("Gifting");
 
 async function getBalanceInEther(account)    {
     balance = parseFloat(await web3.eth.getBalance(account));
@@ -9,7 +9,7 @@ module.exports = async function(callback) {
 
     let accounts = await web3.eth.getAccounts();
 
-    let contractInstance = await OccasionContract.deployed();
+    let contractInstance = await GiftingContract.deployed();
     console.log("Contract instance fetched: ", contractInstance.address);
     
     let my_birthday, my_birthday_date, my_birthday_month, my_birthday_year
@@ -57,5 +57,6 @@ module.exports = async function(callback) {
     console.log(result[0])
     console.log(result[1])
     console.log(result[2])
+    
     callback();
 }

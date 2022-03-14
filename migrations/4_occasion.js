@@ -1,5 +1,5 @@
-const Occasion = artifacts.require("Occasion");
+const Gifting = artifacts.require("Gifting");
 
 module.exports = function (deployer) {
-  deployer.deploy(Occasion);
+  deployer.deploy(Gifting);
 };

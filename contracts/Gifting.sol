@@ -3,7 +3,7 @@ pragma solidity 0.8.11;
 
 import "@quant-finance/solidity-datetime/contracts/DateTime.sol";
 
-contract Occasion {
+contract Gifting {
 
     /* Struct for storing Birthday and gifts received */
     struct Birthday {
